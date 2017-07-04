@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">Car Park</string>
+    <string name="app_name">Автопарк</string>
+    <string name="tipzad">Тип задания:</string>
+    <string name="potpr">Пункт отпр:</string>
+    <string name="pprib">Пункт приб:</string>
+    <string name="komment">Комментарий:</string>
+    <string name="otpr">Отправить</string>
+    <string name="add_task">Создание задания</string>
 </resources>
