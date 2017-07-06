@@ -60,6 +60,55 @@ public class add_task extends AppCompatActivity {
         spinner.setAdapter(stringArrayAdapter);
         spinner.setOnItemSelectedListener(onSpinner);
 
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final String address_start, address_finish, comment, type;
+                address_start = Address_start.getText().toString();
+                address_finish = Address_finish.getText().toString();
+                comment = Comment.getText().toString();
+                type=index;
+
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, server_url,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                builder.setTitle("Ответ от сервера:");
+                                builder.setMessage("Response:" + response);
+                                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        Address_start.setText("");
+                                        Address_finish.setText("");
+                                        Comment.setText("");
+
+                                    }
+                                });
+                                AlertDialog alertDialog = builder.create();
+                                alertDialog.show();
+                            }
+                        }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(add_task.this, "Error", Toast.LENGTH_SHORT).show();
+                        error.printStackTrace();
+                    }
+                }) {
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        Map<String, String> params = new HashMap<String, String>();
+                        params.put("type_bid", type);
+                        params.put("address_start", address_start);
+                        params.put("address_finish", address_finish);
+                        params.put("comment", comment);
+                        return params;
+                    }
+                };
+                MySingleton.getInstance(add_task.this).addTorequestque(stringRequest);
+            }
+
+
+        });
 
     }
 }
