@@ -8,8 +8,8 @@
     <string name="new_task">Новое задания</string>
     <string name="add_task">Добавить задание</string>
 
-    <string-array name="type_task">
+<!--    <string-array name="type_task">
         <item>Пассажиры</item>
         <item>Груз</item>
-    </string-array>
+    </string-array>-->
 </resources>
