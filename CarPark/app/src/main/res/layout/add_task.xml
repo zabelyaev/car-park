@@ -76,10 +76,10 @@
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginTop="40dp"
-                    android:hint="Text"
+                    android:hint="Введите точку отпр."
                     android:inputType="textCapWords"
                     android:textColor="#FFFFFF"
-                    android:textColorHint="#FFFFFF"
+                    android:textColorHint="#64ffffff"
                     android:textSize="15dp" />
             </RelativeLayout>
 
@@ -110,10 +110,10 @@
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginTop="40dp"
-                    android:textColor="#FFFFFF"
                     android:textSize="15dp"
-                    android:hint="Text"
-                    android:textColorHint="#FFFFFF"
+                    android:hint="Введите точку приб."
+                    android:textColor="#FFFFFF"
+                    android:textColorHint="#64ffffff"
                     android:inputType="textCapWords" />
             </RelativeLayout>
 
@@ -144,10 +144,10 @@
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginTop="40dp"
-                    android:textColor="#FFFFFF"
                     android:textSize="15dp"
-                    android:hint="Text"
-                    android:textColorHint="#FFFFFF"
+                    android:hint="Введите комментарий"
+                    android:textColor="#FFFFFF"
+                    android:textColorHint="#64ffffff"
                     android:inputType="textCapWords" />
             </RelativeLayout>
 
