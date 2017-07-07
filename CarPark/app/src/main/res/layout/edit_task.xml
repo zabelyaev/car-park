@@ -150,17 +150,35 @@
                     android:inputType="textCapWords" />
             </RelativeLayout>
 
-            <Button
-                android:id="@+id/add_task"
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="15dp"
-                android:text="@string/otpr"
-                android:layout_gravity="center_horizontal"
-                android:background="@drawable/border"
-                android:textColor="#FFFFFF"
-                android:padding="10dp"/>
+                android:layout_gravity="center_horizontal">
+
+                <Button
+                    android:id="@+id/edit_task"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/border"
+                    android:padding="10dp"
+                    android:text="@string/edit"
+                    android:textColor="#FFFFFF" />
+
+                <Button
+                    android:id="@+id/delete_task"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_toRightOf="@id/edit_task"
+                    android:background="@drawable/border"
+                    android:padding="10dp"
+                    android:text="@string/delete"
+                    android:textColor="#FFFFFF" />
+            </RelativeLayout>
 
         </LinearLayout>
     </ScrollView>

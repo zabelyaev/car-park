@@ -7,9 +7,8 @@
     <string name="otpr">Отправить</string>
     <string name="new_task">Новое задания</string>
     <string name="add_task">Добавить задание</string>
+    <string name="edit_text">Редактировать задание</string>
+    <string name="edit">Изменить</string>
+    <string name="delete">Удалить</string>
 
-<!--    <string-array name="type_task">
-        <item>Пассажиры</item>
-        <item>Груз</item>
-    </string-array>-->
 </resources>

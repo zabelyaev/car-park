@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 public class task_list_a extends AppCompatActivity {
 
@@ -16,6 +17,10 @@ public class task_list_a extends AppCompatActivity {
 
     public void add_task(MenuItem item) {
         startActivity(new Intent(this, add_task.class));
+    }
+
+    public void edit_task(View view) {
+        startActivity(new Intent(this, edit_task.class));
     }
 
     @Override
