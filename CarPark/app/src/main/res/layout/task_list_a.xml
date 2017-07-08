@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="carpark.carpark.task_list_a"
-    android:background="#5D72E1"
-    android:weightSum="1">
+    android:background="#5D72E1">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
@@ -22,4 +21,5 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:visibility="gone"/>
+
 </RelativeLayout>
