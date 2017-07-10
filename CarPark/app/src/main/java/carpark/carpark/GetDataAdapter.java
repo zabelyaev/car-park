@@ -7,6 +7,23 @@ package carpark.carpark;
 public class GetDataAdapter {
 
     String type_bid, address_start, address_finish;
+    String id_bid, comment;
+
+    public void setId_bid(String id_bid) {
+        this.id_bid=id_bid;
+    }
+
+    public String getId_bid(){
+        return id_bid;
+    }
+
+    public void setComment(String comment) {
+        this.comment=comment;
+    }
+
+    public String getComment(){
+        return getComment();
+    }
 
     public void setAddress_start(String address_start) {
         this.address_start = address_start;

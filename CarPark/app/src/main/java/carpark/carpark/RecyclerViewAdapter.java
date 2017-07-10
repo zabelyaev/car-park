@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -34,6 +35,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return viewHolder;
     }
 
+    public void setListContent(ArrayList<GetDataAdapter> getDataAdapter){
+        this.getDataAdapter=getDataAdapter;
+        notifyItemRangeChanged(0,getDataAdapter.size());
+
+    }
+
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
@@ -42,6 +49,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.Type_bid.setText(getDataAdapter1.getType_bid());
         holder.Address_start.setText(String.valueOf(getDataAdapter1.getAddress_start()));
         holder.Address_finish.setText(String.valueOf(getDataAdapter1.getAddress_finish()));
+        holder.Bid_Id.setText(String.valueOf(getDataAdapter1.getId_bid()));
     }
 
     @Override
@@ -52,7 +60,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView Type_bid, Address_start, Address_finish;
+        public TextView Type_bid, Address_start, Address_finish, Bid_Id;
 
         public ViewHolder(View itemView) {
 
@@ -61,8 +69,16 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             Type_bid = itemView.findViewById(R.id.type_bid);
             Address_start = itemView.findViewById(R.id.address_start);
             Address_finish = itemView.findViewById(R.id.address_finish);
+            Bid_Id = itemView.findViewById(R.id.id_task_item);
 
         }
     }
 
+    public void removeAt(int position) {
+        getDataAdapter.remove(position);
+        notifyItemRemoved(position);
+        notifyItemRangeChanged(0, getDataAdapter.size());
+    }
+
 }
+

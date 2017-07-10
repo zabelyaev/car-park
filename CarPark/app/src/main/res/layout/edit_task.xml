@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="carpark.carpark.add_task"
+    tools:context="carpark.carpark.edit_task"
     android:background="#5D72E1">
 
     <ScrollView
@@ -37,13 +37,13 @@
                     android:textSize="18dp"
                     android:id="@+id/textView2" />
 
-                <Spinner
-                    android:id="@+id/spinner"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="15dp"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentEnd="true" />
+                <!--          <Spinner
+                              android:id="@+id/spinner_edit"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:layout_marginEnd="15dp"
+                              android:layout_centerVertical="true"
+                              android:layout_alignParentEnd="true" />-->
 
 
             </RelativeLayout>
@@ -68,7 +68,7 @@
                     android:textSize="17dp" />
 
                 <EditText
-                    android:id="@+id/address_start"
+                    android:id="@+id/address_start_edit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
@@ -102,7 +102,7 @@
                     android:textSize="17dp" />
 
                 <EditText
-                    android:id="@+id/address_finish"
+                    android:id="@+id/address_finish_edit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
@@ -136,7 +136,7 @@
                     android:textSize="17dp" />
 
                 <EditText
-                    android:id="@+id/comment"
+                    android:id="@+id/comment_edit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
@@ -171,13 +171,23 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="15dp"
-                    android:layout_marginTop="15dp"
                     android:layout_marginLeft="40dp"
+                    android:layout_marginTop="15dp"
                     android:layout_toRightOf="@id/edit_task"
                     android:background="@drawable/border"
+                    android:onClick="delete"
                     android:padding="10dp"
                     android:text="@string/delete"
                     android:textColor="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/id_task_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/edit_task"
+                    android:layout_toEndOf="@+id/edit_task"
+                    android:text="sdfdsf"
+                    android:visibility="visible" />
             </RelativeLayout>
 
         </LinearLayout>
