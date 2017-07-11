@@ -67,7 +67,7 @@
                     android:id="@+id/id_task_item"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:visibility="visible"
+                    android:visibility="gone"
                     android:layout_below="@+id/type_bid"
                     android:layout_alignStart="@+id/type_bid"
                     android:layout_marginStart="16dp" />

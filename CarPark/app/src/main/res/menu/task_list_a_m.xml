@@ -5,7 +5,8 @@
     <item
         android:id="@+id/add_bid"
         android:icon="@drawable/add_bid"
+        android:onClick="add_task"
         android:title="add"
-        app:showAsAction="always"
-        android:onClick="add_task"/>
+        app:showAsAction="always" />
+
 </menu>

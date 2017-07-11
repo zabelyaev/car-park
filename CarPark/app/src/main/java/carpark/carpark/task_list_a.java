@@ -123,8 +123,10 @@ public class task_list_a extends AppCompatActivity {
 
     public void edit_task(View view) {
         TextView id_task_item = (TextView) findViewById(R.id.id_task_item);
+        TextView type_bid = (TextView)findViewById(R.id.type_bid);
         Intent intent = new Intent(this, edit_task.class);
         intent.putExtra("id", id_task_item.getText().toString());
+        intent.putExtra("type_bid", type_bid.getText().toString());
         startActivity(intent);
     }
 
