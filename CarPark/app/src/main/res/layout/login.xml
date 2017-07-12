@@ -21,6 +21,7 @@
             android:layout_marginTop="15dp"/>
 
         <EditText
+            android:id="@+id/login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="15dp"
@@ -30,9 +31,10 @@
             android:inputType="textCapWords"
             android:focusableInTouchMode="false"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop=""/>
+           />
 
         <EditText
+            android:id="@+id/password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="15dp"
