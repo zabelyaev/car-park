@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +19,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     Context context;
     List<GetDataAdapter> getDataAdapter;
+    ItemClickListener clickListener;
 
     public RecyclerViewAdapter(List<GetDataAdapter> getDataAdapter, Context context) {
         super();
@@ -50,6 +52,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.Address_start.setText(String.valueOf(getDataAdapter1.getAddress_start()));
         holder.Address_finish.setText(String.valueOf(getDataAdapter1.getAddress_finish()));
         holder.Bid_Id.setText(String.valueOf(getDataAdapter1.getId_bid()));
+        holder.Status_Bid.setText(String.valueOf(getDataAdapter1.getStatus_bid()));
     }
 
     @Override
@@ -58,9 +61,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return getDataAdapter.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder {
+    public void setClickListener(ItemClickListener itemClickListener) {
+        this.clickListener = itemClickListener;
+    }
 
-        public TextView Type_bid, Address_start, Address_finish, Bid_Id;
+        public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
+        public TextView Type_bid, Address_start, Address_finish, Bid_Id, Status_Bid;
 
         public ViewHolder(View itemView) {
 
@@ -70,8 +77,16 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             Address_start = itemView.findViewById(R.id.address_start);
             Address_finish = itemView.findViewById(R.id.address_finish);
             Bid_Id = itemView.findViewById(R.id.id_task_item);
+            Status_Bid = itemView.findViewById(R.id.status_bid);
+
+            itemView.setTag(itemView);
+            itemView.setOnClickListener(this);
 
         }
+            @Override
+            public void onClick(View view) {
+                if (clickListener != null) clickListener.onClick(view, getAdapterPosition());
+            }
     }
 
     public void removeAt(int position) {

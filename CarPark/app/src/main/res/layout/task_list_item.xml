@@ -66,6 +66,17 @@
                     android:textColor="#FFFFFF" />
 
                 <TextView
+                    android:id="@+id/status_bid"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="70dp"
+                    android:text="@string/statusBid"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginTop="95dp"
+                     />
+
+                <TextView
                     android:text="sadsadas"
                     android:id="@+id/id_task_item"
                     android:layout_width="wrap_content"

@@ -1,15 +1,12 @@
 package carpark.carpark;
 
-import android.content.Context;
-import android.content.DialogInterface;
+
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 
 import android.support.v7.widget.LinearLayoutManager;
@@ -19,23 +16,19 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class task_list_a extends AppCompatActivity {
 
@@ -49,7 +42,7 @@ public class task_list_a extends AppCompatActivity {
     String ADDRESS_START = "address_start";
     String ADDRESS_FINISH = "address_finish";
     String BID_ID = "id";
-    AlertDialog.Builder builder;
+    String STATUS_BID = "status_bid";
 
     ImageView type_bid_icon;
 
@@ -106,6 +99,7 @@ public class task_list_a extends AppCompatActivity {
                 GetDataAdapter2.setId_bid(json.getString(BID_ID));
                 GetDataAdapter2.setAddress_start(json.getString(ADDRESS_START));
                 GetDataAdapter2.setAddress_finish(json.getString(ADDRESS_FINISH));
+                GetDataAdapter2.setStatus_bid(json.getString(STATUS_BID));
 
             } catch (JSONException e) {
                 Toast.makeText(task_list_a.this, "Не могу соедениться с сервером...", Toast.LENGTH_LONG);
@@ -130,12 +124,19 @@ public class task_list_a extends AppCompatActivity {
     public void edit_task(View view) {
         TextView id_task_item = (TextView) findViewById(R.id.id_task_item);
         TextView type_bid = (TextView)findViewById(R.id.type_bid);
-        Intent intent = new Intent(this, edit_task.class);
-        intent.putExtra("id", id_task_item.getText().toString());
-        intent.putExtra("type_bid", type_bid.getText().toString());
-        startActivity(intent);
-    }
+        TextView status_bid = (TextView)findViewById(R.id.status_bid);
+        if (status_bid.getText().toString().equals("Не принято")) {
+            Intent intent = new Intent(this, edit_task.class);
+            intent.putExtra("id", id_task_item.getText().toString());
+            intent.putExtra("type_bid", type_bid.getText().toString());
+            startActivity(intent);
+        } else if (status_bid.getText().toString().equals("Принято")) {
+            Intent intent = new Intent(this, activ_task.class);
+            intent.putExtra("id", id_task_item.getText().toString());
+            startActivity(intent);
+        }
 
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

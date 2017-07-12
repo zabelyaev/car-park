@@ -37,7 +37,6 @@ import java.util.Map;
 public class edit_task extends AppCompatActivity implements Spinner.OnItemSelectedListener {
     AlertDialog.Builder builder;
     EditText Address_start_edit, Address_finish_edit, Comment_edit;
-    TextView Id_task_edit;
     String server_url_edit = "http://auto-park.mywebcommunity.org/php/json/getBidEdit.php";
     String server_url_update = "http://auto-park.mywebcommunity.org/php/updateBid.php";
     String server_url_delete = "http://auto-park.mywebcommunity.org/php/deleteBid.php";
@@ -50,6 +49,7 @@ public class edit_task extends AppCompatActivity implements Spinner.OnItemSelect
     ArrayAdapter<String> adapter;
 
     String type_bid;
+    String Id_task_edit;
 
 
     @Override
@@ -57,12 +57,11 @@ public class edit_task extends AppCompatActivity implements Spinner.OnItemSelect
         super.onCreate(savedInstanceState);
         setContentView(R.layout.edit_task);
         Intent intent = getIntent();
-        Id_task_edit = (TextView)findViewById(R.id.id_task_edit);
         Address_start_edit = (EditText) findViewById(R.id.address_start_edit);
         Address_finish_edit = (EditText) findViewById(R.id.address_finish_edit);
         Comment_edit = (EditText) findViewById(R.id.comment_edit);
 
-        Id_task_edit.setText(intent.getStringExtra("id")); // принимаем id с предыдущего activity
+        Id_task_edit=intent.getStringExtra("id"); // принимаем id с предыдущего activity
         type_bid=intent.getStringExtra("type_bid"); // принимаем type_bid с предыдущего activity
 
         typeBid = new ArrayList<String>();
@@ -156,7 +155,7 @@ public class edit_task extends AppCompatActivity implements Spinner.OnItemSelect
     }
 
     public void postId(String server_url_edit) {
-        final String id_task = Id_task_edit.getText().toString().trim();
+        final String id_task = Id_task_edit;
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, server_url_edit,
                 new Response.Listener<String>() {
@@ -184,7 +183,7 @@ public class edit_task extends AppCompatActivity implements Spinner.OnItemSelect
 
     // Получаем данные из JSON
     public void updates( ) {
-        final String id_task2 = Id_task_edit.getText().toString().trim();
+        final String id_task2 = Id_task_edit;
         StringRequest stringRequest = new StringRequest(Request.Method.POST, server_url_edit,
                 new Response.Listener<String>() {
                     @Override
@@ -225,7 +224,7 @@ public class edit_task extends AppCompatActivity implements Spinner.OnItemSelect
     }
 
     public void update(View view) {
-        final String id_task = Id_task_edit.getText().toString().trim();
+        final String id_task = Id_task_edit;
         final String address_start, address_finish, comment, type;
         address_start = Address_start_edit.getText().toString();
         address_finish = Address_finish_edit.getText().toString();

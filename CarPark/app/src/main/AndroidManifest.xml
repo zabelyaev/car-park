@@ -34,6 +34,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".task_list_a" />
         </activity>
+        <activity android:name=".activ_task"></activity>
     </application>
 
 </manifest>

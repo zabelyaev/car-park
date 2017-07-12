@@ -4,6 +4,7 @@
     <string name="potpr">Пункт отпр:</string>
     <string name="pprib">Пункт приб:</string>
     <string name="komment">Комментарий:</string>
+    <string name="statusBid">Статус заявки</string>
     <string name="otpr">Отправить</string>
     <string name="new_task">Новое задания</string>
     <string name="add_task">Добавить задание</string>
