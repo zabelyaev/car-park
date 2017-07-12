@@ -11,6 +11,7 @@ import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -51,8 +52,6 @@ public class edit_task extends AppCompatActivity implements Spinner.OnItemSelect
     String type_bid;
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,6 +70,7 @@ public class edit_task extends AppCompatActivity implements Spinner.OnItemSelect
         spinner.setOnItemSelectedListener(this);
 
         builder = new AlertDialog.Builder(edit_task.this);
+
 
         getDataSpinner();
         updates();
@@ -189,7 +189,7 @@ public class edit_task extends AppCompatActivity implements Spinner.OnItemSelect
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Toast.makeText(edit_task.this,response,Toast.LENGTH_LONG).show();
+                        /*Toast.makeText(edit_task.this,response,Toast.LENGTH_LONG).show();*/
 
                         try {
                             JSONObject jsonObject = new JSONObject(response);
@@ -204,7 +204,7 @@ public class edit_task extends AppCompatActivity implements Spinner.OnItemSelect
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-                        Toast.makeText(edit_task.this,response,Toast.LENGTH_LONG).show();
+                      /*  Toast.makeText(edit_task.this,response,Toast.LENGTH_LONG).show();*/
                     }
                 }, new Response.ErrorListener() {
             @Override

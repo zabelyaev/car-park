@@ -1,6 +1,7 @@
 package carpark.carpark;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -28,6 +29,7 @@ public class add_task extends AppCompatActivity {
     String server_url = "http://auto-park.mywebcommunity.org/php/query/bidInsert.php";
     AlertDialog.Builder builder;
     public String index;
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +61,7 @@ public class add_task extends AppCompatActivity {
         ArrayAdapter<String> stringArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, type_bid);
         spinner.setAdapter(stringArrayAdapter);
         spinner.setOnItemSelectedListener(onSpinner);
+         intent = new Intent(this, task_list_a.class);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,7 +76,7 @@ public class add_task extends AppCompatActivity {
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
-                                builder.setTitle("Ответ от сервера:");
+                /*                builder.setTitle("Ответ от сервера:");
                                 builder.setMessage("Response:" + response);
                                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                     @Override
@@ -85,7 +88,7 @@ public class add_task extends AppCompatActivity {
                                     }
                                 });
                                 AlertDialog alertDialog = builder.create();
-                                alertDialog.show();
+                                alertDialog.show();*/
                             }
                         }, new Response.ErrorListener() {
                     @Override
@@ -105,6 +108,7 @@ public class add_task extends AppCompatActivity {
                     }
                 };
                 MySingleton.getInstance(add_task.this).addTorequestque(stringRequest);
+                startActivity(intent);
             }
 
 

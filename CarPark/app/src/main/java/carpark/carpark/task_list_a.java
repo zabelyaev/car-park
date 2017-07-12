@@ -14,6 +14,7 @@ import android.view.View;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -48,10 +49,9 @@ public class task_list_a extends AppCompatActivity {
     String ADDRESS_START = "address_start";
     String ADDRESS_FINISH = "address_finish";
     String BID_ID = "id";
-    String server_url_edit = "http://auto-park.mywebcommunity.org/php/json/getBidEdit.php";
     AlertDialog.Builder builder;
 
-    TextView id_task_item;
+    ImageView type_bid_icon;
 
     JsonArrayRequest jsonArrayRequest;
     RequestQueue requestQueue;
@@ -67,9 +67,13 @@ public class task_list_a extends AppCompatActivity {
         recyclerViewlayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(recyclerViewlayoutManager);
 
+        type_bid_icon = (ImageView)findViewById(R.id.type_bid_icon);
 
         progressBar.setVisibility(View.VISIBLE);
         getData();
+
+
+
     }
 
     public void getData() {
@@ -96,13 +100,13 @@ public class task_list_a extends AppCompatActivity {
         for (int i = 0; i < array.length(); i++) {
             GetDataAdapter GetDataAdapter2 = new GetDataAdapter();
             JSONObject json = null;
-
             try {
                 json = array.getJSONObject(i);
                 GetDataAdapter2.setType_bid(json.getString(TYPE_BID));
                 GetDataAdapter2.setId_bid(json.getString(BID_ID));
                 GetDataAdapter2.setAddress_start(json.getString(ADDRESS_START));
                 GetDataAdapter2.setAddress_finish(json.getString(ADDRESS_FINISH));
+
             } catch (JSONException e) {
                 Toast.makeText(task_list_a.this, "Не могу соедениться с сервером...", Toast.LENGTH_LONG);
                 e.printStackTrace();
@@ -112,6 +116,8 @@ public class task_list_a extends AppCompatActivity {
 
         recyclerViewadapter = new RecyclerViewAdapter(GetDataAdapter1, this);
         recyclerView.setAdapter(recyclerViewadapter);
+
+
 
     }
 
