@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -53,9 +54,10 @@ public class login extends AppCompatActivity {
 
             StringRequest stringRequest = new StringRequest(Request.Method.POST, server_url_login,
                     new Response.Listener<String>() {
-                        Intent intent;
+
                         @Override
                         public void onResponse(String response) {
+                            final Intent intent;
                             try {
                                 JSONObject jsonObject = new JSONObject(response);
                                 JSONArray jsonArray = jsonObject.getJSONArray("users");
@@ -63,15 +65,16 @@ public class login extends AppCompatActivity {
                                 privelege = data.getString("privilege");
 
                                 if (privelege.equals("admin")) {
-                                    intent = new Intent(login.this, task_list_a.class);
-                                    Bundle bundle = new Bundle();
-                                    bundle.putString("privilege",jsonObject.getString("privilege"));
-                                    intent.putExtras(bundle);
+                                    intent = new Intent(login.this, task_list_a.class);;
+                                    startActivity(intent);
                                 } else if (privelege.equals("driver")) {
                                     intent = new Intent(login.this, add_task.class);
+                                    startActivity(intent);
+
                                   }
 
-                                startActivity(intent);
+
+                                Toast.makeText(login.this,response,Toast.LENGTH_SHORT).show();
 
                             } catch (JSONException e) {
                                 e.printStackTrace();

@@ -76,19 +76,7 @@ public class add_task extends AppCompatActivity {
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
-                /*                builder.setTitle("Ответ от сервера:");
-                                builder.setMessage("Response:" + response);
-                                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        Address_start.setText("");
-                                        Address_finish.setText("");
-                                        Comment.setText("");
 
-                                    }
-                                });
-                                AlertDialog alertDialog = builder.create();
-                                alertDialog.show();*/
                             }
                         }, new Response.ErrorListener() {
                     @Override

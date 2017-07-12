@@ -11,13 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_ap"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".task_list_a">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".task_list_a"></activity>
         <activity
             android:name=".add_task"
             android:label="@string/add_task"
@@ -42,7 +36,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".task_list_a" />
         </activity>
-        <activity android:name=".login"></activity>
+        <activity
+            android:name=".login"
+            android:label="@string/auto" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
