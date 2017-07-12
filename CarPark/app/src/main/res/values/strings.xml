@@ -14,5 +14,6 @@
     <string name="activ_task">Принятое задание</string>
     <string name="driver">Водитель:</string>
     <string name="car">Машина:</string>
+    <string name="login">Войти</string>
 
 </resources>

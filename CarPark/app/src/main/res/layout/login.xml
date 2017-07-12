@@ -16,32 +16,53 @@
             android:id="@+id/imageView"
             android:layout_width="200dp"
             android:layout_height="200dp"
-            app:srcCompat="@mipmap/ic_launcher_ap"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="15dp"/>
+            android:layout_marginTop="15dp"
+            app:srcCompat="@mipmap/ic_launcher_ap" />
 
-        <EditText
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="15dp"
-            android:hint="Введите логин"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#64ffffff"
-            android:inputType="textCapWords"
-            android:focusableInTouchMode="false"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop=""/>
+            android:background="@drawable/border"
+            android:onClick="login"
+            android:text="@string/login"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="380dp"
+            android:padding="20dp"/>
 
-        <EditText
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="15dp"
-            android:hint="Введите пароль"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#64ffffff"
-            android:inputType="textCapWords"
-            android:focusableInTouchMode="false"
-            android:layout_centerHorizontal="true"/>
+            android:background="@drawable/border"
+            android:padding="10dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="240dp">
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:focusableInTouchMode="false"
+                android:hint="Введите логин"
+                android:inputType="textCapWords"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#64ffffff"
+                android:textSize="18dp" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:focusableInTouchMode="false"
+                android:hint="Введите пароль"
+                android:inputType="textCapWords"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#64ffffff"
+                android:textSize="18dp"
+                android:layout_marginTop="50dp"/>
+
+        </RelativeLayout>
 
     </RelativeLayout>
 </LinearLayout>
