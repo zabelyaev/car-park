@@ -79,7 +79,8 @@
                     android:inputType="textCapWords"
                     android:textColor="#FFFFFF"
                     android:textColorHint="#64ffffff"
-                    android:textSize="15dp" />
+                    android:textSize="15dp"
+                    android:focusableInTouchMode="false"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -113,7 +114,8 @@
                     android:hint="Введите точку приб."
                     android:textColor="#FFFFFF"
                     android:textColorHint="#64ffffff"
-                    android:inputType="textCapWords" />
+                    android:inputType="textCapWords"
+                    android:focusableInTouchMode="false" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -147,7 +149,8 @@
                     android:hint="Введите комментарий"
                     android:textColor="#FFFFFF"
                     android:textColorHint="#64ffffff"
-                    android:inputType="textCapWords" />
+                    android:inputType="textCapWords"
+                    android:focusableInTouchMode="false" />
             </RelativeLayout>
 
             <Button

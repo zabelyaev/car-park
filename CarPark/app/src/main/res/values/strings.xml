@@ -4,12 +4,15 @@
     <string name="potpr">Пункт отпр:</string>
     <string name="pprib">Пункт приб:</string>
     <string name="komment">Комментарий:</string>
-    <string name="statusBid">Статус заявки</string>
+    <string name="status_bid">Статус:</string>
     <string name="otpr">Отправить</string>
     <string name="new_task">Новое задания</string>
     <string name="add_task">Добавить задание</string>
     <string name="edit_text">Редактировать задание</string>
     <string name="edit">Изменить</string>
     <string name="delete">Удалить</string>
+    <string name="activ_task">Принятое задание</string>
+    <string name="driver">Водитель:</string>
+    <string name="car">Машина:</string>
 
 </resources>

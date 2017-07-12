@@ -34,7 +34,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".task_list_a" />
         </activity>
-        <activity android:name=".activ_task"></activity>
+        <activity
+            android:name=".activ_task"
+            android:label="@string/activ_task"
+            android:parentActivityName=".task_list_a">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".task_list_a" />
+        </activity>
+        <activity android:name=".login"></activity>
     </application>
 
 </manifest>
