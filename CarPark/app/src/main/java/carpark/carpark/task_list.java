@@ -68,7 +68,7 @@ public class task_list extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(task_list.this,"Ошибка ",Toast.LENGTH_LONG);
+                Toast.makeText(task_list.this,"Ошибка...",Toast.LENGTH_LONG);
             }
         });
         requestQueue = Volley.newRequestQueue(this);
