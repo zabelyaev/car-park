@@ -16,5 +16,12 @@
     <string name="car">Машина:</string>
     <string name="login">Войти</string>
     <string name="auto">Авторизация</string>
+    <string name="acceptTask">Принять</string>
+    <string name="fullInfoDriver">Полная информация</string>
+    <string name="driverId">DRIVER_ID</string>
+    <string name="carId">CAR_ID</string>
+    <string name="completeTask">Завершить</string>
+    <string name="cancleTask">Отменить</string>
+    <string name="bidId"></string>
 
 </resources>

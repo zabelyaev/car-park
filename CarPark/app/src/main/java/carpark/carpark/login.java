@@ -1,7 +1,9 @@
 package carpark.carpark;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,9 +29,14 @@ public class login extends AppCompatActivity {
 
     String server_url_login = "http://auto-park.mywebcommunity.org/php/json/authorization.php";
     EditText Login, Password;
-    String privelege;
+    String privelege, driver_id;
 
     AlertDialog.Builder builder;
+
+    public static final String MySession = "Session";
+    public static final String login = "login";
+    public static final String password = "password";
+    SharedPreferences sharedPreferences;
 
 
     @Override
@@ -40,6 +47,7 @@ public class login extends AppCompatActivity {
         Login = (EditText)findViewById(R.id.login);
         Password = (EditText)findViewById(R.id.password);
         builder = new AlertDialog.Builder(login.this);
+        sharedPreferences = getSharedPreferences(MySession, Context.MODE_PRIVATE);
     }
 
     public void login(View view) {
@@ -47,40 +55,43 @@ public class login extends AppCompatActivity {
         final String password = Password.getText().toString();
 
         if (login.equals("") || password.equals("")) {
-            builder.setTitle("Пидр, введи все данные");
-            displayAlert("Ну ты и пидр");
+            builder.setTitle("Введите все данные");
+            displayAlert("Введите все данные");
         } else {
 
 
             StringRequest stringRequest = new StringRequest(Request.Method.POST, server_url_login,
                     new Response.Listener<String>() {
-
                         @Override
                         public void onResponse(String response) {
                             final Intent intent;
+                            final String bid_id = sharedPreferences.getString(getString(R.string.bidId),"");
                             try {
                                 JSONObject jsonObject = new JSONObject(response);
                                 JSONArray jsonArray = jsonObject.getJSONArray("users");
                                 JSONObject data = jsonArray.getJSONObject(0);
                                 privelege = data.getString("privilege");
-
+                                driver_id = data.getString("driver_id");
+                                SharedPreferences.Editor editor = sharedPreferences.edit();
                                 if (privelege.equals("admin")) {
-                                    intent = new Intent(login.this, task_list_a.class);;
+                                    intent = new Intent(login.this, task_list_a.class);
                                     startActivity(intent);
-                                } else if (privelege.equals("driver")) {
-                                    intent = new Intent(login.this, add_task.class);
+                                } else if ((bid_id.equals("")) && (privelege.equals("driver"))) {
+                                    intent = new Intent(login.this, task_list_d.class);
+                                    editor.putString(getString(R.string.driverId),driver_id);
+                                    editor.commit();
                                     startActivity(intent);
-
                                   }
-
-
-                                Toast.makeText(login.this,response,Toast.LENGTH_SHORT).show();
+                                  else {
+                                    intent = new Intent(login.this, info_task_d.class);
+                                    editor.putString(getString(R.string.driverId),driver_id);
+                                    editor.commit();
+                                    startActivity(intent);
+                                }
 
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
-
-
                         }
                     }, new Response.ErrorListener() {
                 @Override

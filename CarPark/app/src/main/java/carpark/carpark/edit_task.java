@@ -38,8 +38,8 @@ public class edit_task extends AppCompatActivity implements Spinner.OnItemSelect
     AlertDialog.Builder builder;
     EditText Address_start_edit, Address_finish_edit, Comment_edit;
     String server_url_edit = "http://auto-park.mywebcommunity.org/php/json/getBidEdit.php";
-    String server_url_update = "http://auto-park.mywebcommunity.org/php/updateBid.php";
-    String server_url_delete = "http://auto-park.mywebcommunity.org/php/deleteBid.php";
+    String server_url_update = "http://auto-park.mywebcommunity.org/php/query/updateBid.php";
+    String server_url_delete = "http://auto-park.mywebcommunity.org/php/query/deleteBid.php";
     String server_url_type_bid = "http://auto-park.mywebcommunity.org/php/json/getTypeBid.php";
     public String index;
 

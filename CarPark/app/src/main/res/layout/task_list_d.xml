@@ -4,20 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="carpark.carpark.task_list_a"
+    tools:context="carpark.carpark.task_list_d"
     android:background="#5D72E1"
     >
 
 
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/recyclerView_d"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
 
     <ProgressBar
-        android:id="@+id/progressBar"
+        android:id="@+id/progressBar_d"
         style="?android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

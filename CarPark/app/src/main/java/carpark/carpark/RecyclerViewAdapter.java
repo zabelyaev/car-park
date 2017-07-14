@@ -1,99 +1,98 @@
 package carpark.carpark;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.List;
 
-/**
- * Created by Roman on 08.07.2017.
- */
+public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.BidViewHolder> {
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
+    ArrayList<GetDataAdapter> bid = new ArrayList<GetDataAdapter>();
+    Context ctx;
 
-    Context context;
-    List<GetDataAdapter> getDataAdapter;
-    ItemClickListener clickListener;
-
-    public RecyclerViewAdapter(List<GetDataAdapter> getDataAdapter, Context context) {
-        super();
-        this.getDataAdapter = getDataAdapter;
-        this.context = context;
+    public RecyclerViewAdapter(ArrayList<GetDataAdapter> bid, Context ctx) {
+        this.bid = bid;
+        this.ctx = ctx;
     }
 
+    Context context;
+
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public BidViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.task_list_item, parent, false);
 
-        ViewHolder viewHolder = new ViewHolder(v);
+        BidViewHolder bidViewHolder = new BidViewHolder(v,ctx,bid);
 
-        return viewHolder;
+        return bidViewHolder;
     }
 
-    public void setListContent(ArrayList<GetDataAdapter> getDataAdapter){
-        this.getDataAdapter=getDataAdapter;
-        notifyItemRangeChanged(0,getDataAdapter.size());
-
-    }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(BidViewHolder holder, int position) {
 
-        GetDataAdapter getDataAdapter1 =  getDataAdapter.get(position);
+        GetDataAdapter BID =  bid.get(position);
 
-        holder.Type_bid.setText(getDataAdapter1.getType_bid());
-        holder.Address_start.setText(String.valueOf(getDataAdapter1.getAddress_start()));
-        holder.Address_finish.setText(String.valueOf(getDataAdapter1.getAddress_finish()));
-        holder.Bid_Id.setText(String.valueOf(getDataAdapter1.getId_bid()));
-        holder.Status_Bid.setText(String.valueOf(getDataAdapter1.getStatus_bid()));
+        holder.Type_bid.setText(BID.getType_bid());
+        holder.Address_start.setText(String.valueOf(BID.getAddress_start()));
+        holder.Address_finish.setText(String.valueOf(BID.getAddress_finish()));
+        holder.Bid_Id.setText(String.valueOf(BID.getId_bid()));
+        holder.Status_Bid.setText(String.valueOf(BID.getStatus_bid()));
     }
 
     @Override
     public int getItemCount() {
 
-        return getDataAdapter.size();
+        return bid.size();
     }
 
-    public void setClickListener(ItemClickListener itemClickListener) {
-        this.clickListener = itemClickListener;
-    }
+    public static class BidViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener  {
 
-        public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        TextView Type_bid, Address_start, Address_finish, Bid_Id, Status_Bid;
 
-        public TextView Type_bid, Address_start, Address_finish, Bid_Id, Status_Bid;
+        ArrayList<GetDataAdapter> bid = new ArrayList<GetDataAdapter>();
+        Context ctx;
 
-        public ViewHolder(View itemView) {
+        public BidViewHolder(View view, Context ctx, ArrayList<GetDataAdapter> bid) {
 
-            super(itemView);
+            super(view);
+            view.setOnClickListener(this);
+            this.bid = bid;
+            this.ctx = ctx;
 
-            Type_bid = itemView.findViewById(R.id.type_bid);
-            Address_start = itemView.findViewById(R.id.address_start);
-            Address_finish = itemView.findViewById(R.id.address_finish);
-            Bid_Id = itemView.findViewById(R.id.id_task_item);
-            Status_Bid = itemView.findViewById(R.id.status_bid);
-
-            itemView.setTag(itemView);
-            itemView.setOnClickListener(this);
+            Type_bid = view.findViewById(R.id.type_bid);
+            Address_start = view.findViewById(R.id.address_start);
+            Address_finish = view.findViewById(R.id.address_finish);
+            Bid_Id = view.findViewById(R.id.id_task_item);
+            Status_Bid = view.findViewById(R.id.status_bid);
 
         }
-            @Override
-            public void onClick(View view) {
-                if (clickListener != null) clickListener.onClick(view, getAdapterPosition());
+
+        @Override
+        public void onClick(View view) {
+
+            int position = getAdapterPosition();
+            GetDataAdapter bid = this.bid.get(position);
+
+            if (Status_Bid.getText().toString().equals("Не принято")) {
+                Intent intent = new Intent(this.ctx, edit_task.class);
+                intent.putExtra("id",bid.getId_bid());
+                intent.putExtra("type_bid",bid.getType_bid());
+                this.ctx.startActivity(intent);
+            } else if (Status_Bid.getText().toString().equals("Принято")) {
+                Intent intent = new Intent(this.ctx, activ_task.class);
+                intent.putExtra("id", bid.getId_bid());
+                this.ctx.startActivity(intent);
             }
+
+        }
     }
 
-    public void removeAt(int position) {
-        getDataAdapter.remove(position);
-        notifyItemRemoved(position);
-        notifyItemRangeChanged(0, getDataAdapter.size());
-    }
 
 }
 
